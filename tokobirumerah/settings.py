@@ -55,7 +55,7 @@ ROOT_URLCONF = 'tokobirumerah.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],  # Ensure your templates are stored in this folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
