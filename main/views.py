@@ -6,7 +6,9 @@ def show_main(request):
         'harga': 'Rp. 20.000',
         'description': 'Daging naga renyah dengan taburan darah kraken.',
         'rating' : '4.9/5.0',
-        'quantity' : 'Maksimal 1 tiap transaksi.'
+        'quantity' : 'Maksimal 1 tiap transaksi.',
+        'name' : 'Daniel Angger Dewandaru',
+        'NPM' : '2306275973'
     }
 
     return render(request, "main.html", context)
