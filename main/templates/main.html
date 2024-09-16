@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>Toko Biru Merah</h1>
 
 <h3>Nama kreator: </h3>
@@ -14,3 +16,34 @@
 <p>{{ rating }}</p>
 <h5>Quantitas:</h5>
 <p>{{ quantity }}</p>
+
+{% if not mood_entries %}
+<p>Belum ada data pesanan pada Toko Biru Merah.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Nama Pesanan</th>
+    <th>Time</th>
+    <th>Keterangan</th>
+    <th>Quantitas</th>
+  </tr>
+
+  {% comment %} Berikut cara memperlihatkan data mood di bawah baris ini 
+  {% endcomment %} 
+  {% for mood_entry in mood_entries %}
+  <tr>
+    <td>{{mood_entry.mood}}</td>
+    <td>{{mood_entry.time}}</td>
+    <td>{{mood_entry.feelings}}</td>
+    <td>{{mood_entry.mood_intensity}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_mood_entry' %}">
+  <button>Buat Pesanan Baru</button>
+</a>
+{% endblock content %}
