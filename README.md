@@ -17,4 +17,4 @@ Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat 
 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 -. Pertama, pastikan Django sudah terinstal. Kedua, buatlah proyek Django yang akan diimplementasikan. Ketiga, konfigurasikan settings.py sesuai proyek kita. Keempat, buatlah form pada proyek DJango. Kelima, tambahkan csrf_token pada form tersebut. Keenam, tangani permintaan di views dengan method is_valid(). Ketujuh, tambahkan url untuk views.py. Kedelapan, tambahkan url aplikasi untuk proyek. Kesembilan, ujicoba melalui localhost. Kesepuluh, perketat keamanan dalam settings.py.
 
-![Alt text](<Screenshot 2024-09-16 at 19.35.03.png>) ![Alt text](<Screenshot 2024-09-16 at 19.34.33.png>) ![Alt text](<Screenshot 2024-09-16 at 19.33.51.png>) ![Alt text](<Screenshot 2024-09-16 at 19.33.25.png>)
+![Alt text](<Screenshot 2024-09-16 at 21.21.31.png>) ![Alt text](<Screenshot 2024-09-16 at 21.20.46.png>) ![Alt text](<Screenshot 2024-09-16 at 21.19.31.png>) ![Alt text](<Screenshot 2024-09-16 at 21.19.03.png>)
