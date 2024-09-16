@@ -32,10 +32,10 @@
   {% endcomment %} 
   {% for mood_entry in mood_entries %}
   <tr>
-    <td>{{mood_entry.mood}}</td>
+    <td>{{mood_entry.pesanan}}</td>
     <td>{{mood_entry.time}}</td>
-    <td>{{mood_entry.feelings}}</td>
-    <td>{{mood_entry.mood_intensity}}</td>
+    <td>{{mood_entry.keterangan}}</td>
+    <td>{{mood_entry.quantitas}}</td>
   </tr>
   {% endfor %}
 </table>
@@ -43,7 +43,7 @@
 
 <br />
 
-<a href="{% url 'main:create_mood_entry' %}">
+<a href="{% url 'main:create_pesanan_entry' %}">
   <button>Buat Pesanan Baru</button>
 </a>
 {% endblock content %}
