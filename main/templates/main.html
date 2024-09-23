@@ -46,4 +46,10 @@
 <a href="{% url 'main:create_pesanan_entry' %}">
   <button>Buat Pesanan Baru</button>
 </a>
+
+<a href="{% url 'main:logout' %}">
+  <button>Logout</button>
+</a>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
