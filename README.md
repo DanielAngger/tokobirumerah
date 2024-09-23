@@ -1,7 +1,8 @@
-Daniel Angger Dewandaru
-2306275973
-PBP A
+#Daniel Angger Dewandaru
+#2306275973
+#PBP A
 
+##TUGAS 3
 Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
 -. Singkatnya kita memerlukan data delivery untuk mendukung performa serta pengalaman pengguna dalam menggunakan sebuah platform. Bila diperjelas, data delivery memungkinkan sebuah akses data real-time, yang banyak diperlukan oleh platform e-commerce. Lalu, data delivery juga memungkinkan untuk mengoptimisasi performa, karena memungkinkan pengguna untuk mengakses data secara cepat. Dan yang paling penting, pengenkripsian data sebelum dikirim menjamin keamanan data dari pihak tidak berwenang.
 
@@ -18,3 +19,20 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
 -. Pertama, pastikan Django sudah terinstal. Kedua, buatlah proyek Django yang akan diimplementasikan. Ketiga, konfigurasikan settings.py sesuai proyek kita. Keempat, buatlah form pada proyek DJango. Kelima, tambahkan csrf_token pada form tersebut. Keenam, tangani permintaan di views dengan method is_valid(). Ketujuh, tambahkan url untuk views.py. Kedelapan, tambahkan url aplikasi untuk proyek. Kesembilan, ujicoba melalui localhost. Kesepuluh, perketat keamanan dalam settings.py.
 
 ![Alt text](<Screenshot 2024-09-16 at 21.21.31.png>) ![Alt text](<Screenshot 2024-09-16 at 21.20.46.png>) ![Alt text](<Screenshot 2024-09-16 at 21.19.31.png>) ![Alt text](<Screenshot 2024-09-16 at 21.19.03.png>)
+
+
+##Tugas 4
+Apa perbedaan antara HttpResponseRedirect() dan redirect()
+-. Perbedaan antara HttpResponseRedirect() dan redirect() adalah HttpResponseRedirect() bersifat lebih eksplisit, karena harus selalu memberikan URL yang diperlukan, sementara redirect() bersifat lebih fleksibel, karena bisa menggunakan nama view dan objek model, sehingga menurut data, redirect() lebih sering digunakan.
+
+Jelaskan cara kerja penghubungan model Product dengan User!
+-. Untuk menghubungkan Product dan User, kita bisa menghubungkannya dengan ForeignKeys. ForeignKeys memungkinkan kita untuk menghubungkan satu atau banyak model Product dengan satu User melalui sebuah hubungan. Hubungan ini diperlukan untuk aplikasi-aplikasi seperti toko online, postingan blog, dll.
+
+Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+-. Kalau dari definisi, autentication berfungsi untuk memverifikasi identitas pengguna, sedangkan authorization berfungsi untuk memverifikasi hak akses pengguna. Autentication biasanya mengecek kredensial, misalnya username dan password, sedangkan authorization biasanya mengecek izin akses pengguna. Saat pengguna login, yang terjadi adalah penggabungan dari autentication dan authorization, yaitu sistem akan meminta dan memverifikasi kredensial pengguna, misalnya username dan password. Setelah kredensial terverifikasi, pengguna akan berhasil login. Setelah login, sistem akan menentukan izin akses pengguna, dan memberikan semua resource yang bisa diakses menurut izin aksesnya. Contoh pengimplementasian pada Django adalah melalui method autenticate() dan @permission_required.
+
+Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+-. Django bisa mengingat pengguna yang telah login dengan menggunakan cookies. Saat pengguna login, Django akan membuat session dan menyimpannya di sebuah database dan mengaitkannya dengan sebuah cookie pada browser pengguna. Kegunaan lain cookies adalah menyimpan preferensi pengguna, menerapkan CSRF, dan melakukan pelacakan perilaku. Tidak semua cookies aman digunakan, apalagi bila tidak memperhatikan praktik terbaik keamanan.
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)?
+-. Pertama, buatlah form registrasi serta login bagi pengguna. Registrasi berfungsi bagi pengguna yang belum memiliki akun dan login berfungsi bagi pengguna yang sudah memiliki akun. Kedua, konfigurasikanlah fungsi login pada projek yang akan digunakan. Ketiga, buatlah juga fungsi logout, yang bisa digunakan pengguna untuk berganti akun. Saat mengimplementasikan fungsi login dan logout, jangan lupa mengimplementasikan fungsi "last login", yang berguna untuk melacak aktivitas akun dan memverifikasinya dengan aktivitas pengguna pada akun tersebut. Keempat, restriksilah halaman main, yang hanya bisa diakses saat pengguna berhasil login. Autentifikasikan juga halaman main dengan data dari cookie pengguna dengan menggabungkan model Product dan User menggunakan ForeignKeys.
