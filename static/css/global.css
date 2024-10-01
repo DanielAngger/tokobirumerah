@@ -1,0 +1,49 @@
+.form-style form input, form textarea, form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #bcbcbc;
+    border-radius: 0.375rem;
+}
+.form-style form input:focus, form textarea:focus, form select:focus {
+    outline: none;
+    border-color: #674ea7;
+    box-shadow: 0 0 0 3px #674ea7;
+}
+@keyframes shine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.animate-shine {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.4));
+    background-size: 400% 100%;
+    animation: shine 2s linear infinite;
+}
+.heading-text {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+.heading-text::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 100px;
+    background-color: rgba(230, 94, 99, 0.8);
+    border-radius: 20px;
+    z-index: -1;
+}
+@keyframes shine-navbar {
+    0% { background-position: -300% 0; }
+    100% { background-position: 300% 0; }
+}
+
+.navbar-shine {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.4));
+    background-size: 300% 100%;
+    animation: shine-navbar 2s infinite;
+    filter: brightness(1.1);
+    border-radius: 0.375rem;
+}

@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.utils import timezone
-from .models import MoodEntry
+from .models import PesananEntry
 
 class mainTest(TestCase):
     def test_main_url_is_exist(self):
@@ -17,10 +17,10 @@ class mainTest(TestCase):
 
     def test_strong_mood_user(self):
         now = timezone.now()
-        mood = MoodEntry.objects.create(
-          mood="LUMAYAN SENANG",
+        pesanan = PesananEntry.objects.create(
+          pesanan="LUMAYAN SENANG",
           time = now,
           feelings = "senang sih, cuman tadi baju aku basah kena hujan :(",
-          mood_intensity = 8,
+          pesanan_intensity = 8,
         )
-        self.assertTrue(mood.is_mood_strong)
+        self.assertTrue(pesanan.is_mood_strong)

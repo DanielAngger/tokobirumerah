@@ -7,15 +7,18 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
-from django.shortcuts import render, redirect   # Tambahkan import redirect di baris ini
+from django.shortcuts import render, redirect, reverse   # Tambahkan import redirect di baris ini
 from main.forms import PesananEntryForm
 from main.models import PesananEntry
 
 @login_required(login_url='/login')
 def show_main(request):
-    mood_entries = PesananEntry.objects.filter(user=request.user)
+    pesanan_entries = PesananEntry.objects.filter(user=request.user)
+
+    # Safely access the 'last_login' cookie with a default value
+    last_login = request.COOKIES.get('last_login', 'Tidak pernah login.')
 
     context = {
         'nama' : 'Daging Naga khas Sulawesi',
@@ -25,8 +28,8 @@ def show_main(request):
         'quantity' : 'Maksimal 1 tiap transaksi.',
         'name' : request.user.username,
         'NPM' : '2306275973',
-        'mood_entries': mood_entries,
-        'last_login': request.COOKIES['last_login'],
+        'pesanan_entries': pesanan_entries,
+        'last_login': last_login,  # Use the default value if the cookie is missing
     }
 
     return render(request, "main.html", context)
@@ -92,3 +95,26 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def edit_pesanan(request, id):
+    # Get mood entry berdasarkan id
+    pesanan = PesananEntry.objects.get(pk = id)
+
+    # Set mood entry sebagai instance dari form
+    form = PesananEntryForm(request.POST or None, instance=pesanan)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_pesanan.html", context)
+
+def delete_pesanan(request, id):
+    # Get mood berdasarkan id
+    pesanan = PesananEntry.objects.get(pk = id)
+    # Hapus mood
+    pesanan.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))

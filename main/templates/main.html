@@ -1,55 +1,52 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Toko Biru Merah</title>
+{% endblock meta %}
 {% block content %}
-<h1>Toko Biru Merah</h1>
+{% include 'navbar.html' %}
 
-<h3>Nama kreator: </h3>
-<p>{{ name }}</p>
-<h3>NPM kreator: </h3>
-<p>{{ NPM }}</p>
-<h3>Nama produk: </h3>
-<p>{{ nama }}</p>
-<h5>Harga: </h5>
-<p>{{ harga }}</p>
-<h5>Deskripsi:</h5>
-<p>{{ description }}</p>
-<h5>Rating: </h5>
-<p>{{ rating }}</p>
-<h5>Quantitas:</h5>
-<p>{{ quantity }}</p>
-
-{% if not mood_entries %}
-<p>Belum ada data pesanan pada Toko Biru Merah.</p>
-{% else %}
-<table>
-  <tr>
-    <th>Nama Pesanan</th>
-    <th>Time</th>
-    <th>Keterangan</th>
-    <th>Quantitas</th>
-  </tr>
-
-  {% comment %} Berikut cara memperlihatkan data mood di bawah baris ini 
-  {% endcomment %} 
-  {% for mood_entry in mood_entries %}
-  <tr>
-    <td>{{mood_entry.pesanan}}</td>
-    <td>{{mood_entry.time}}</td>
-    <td>{{mood_entry.keterangan}}</td>
-    <td>{{mood_entry.quantitas}}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
-
-<br />
-
-<a href="{% url 'main:create_pesanan_entry' %}">
-  <button>Buat Pesanan Baru</button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-gray-100 flex flex-col">
+  <div class="p-2 mb-6 relative">
+    <div class="relative grid grid-cols-1 z-30 md:grid-cols-3 gap-8">
+      {% include "card_info.html" with title='NPM' value=NPM %}
+      {% include "card_info.html" with title='Nama Kreator' value=name %}
+      {% include "card_info.html" with title='Nama Produk' value=nama %}
+      {% include "card_info.html" with title='Harga' value=harga %}
+      {% include "card_info.html" with title='Deskripsi' value=description %}
+      {% include "card_info.html" with title='Rating' value=rating %}
+    </div>
+    <div class="w-full px-6  absolute top-[44px] left-0 z-20 hidden md:flex">
+      <div class="w-full min-h-4 bg-red-400">
+      </div>
+    </div>
+    <div class="h-full w-full py-6  absolute top-0 left-0 z-20 md:hidden flex ">
+      <div class="h-full min-w-4 bg-red-400 mx-auto">
+      </div>
+    </div>
+</div>
+  <div class="px-3 mb-4">
+    <div class="flex rounded-md items-center bg-red-300 py-2 px-4 w-fit">
+      <h1 class="text-white text-center">Last Login: {{last_login}}</h1>
+    </div>
+  </div>
+  <div class="flex justify-end mb-6">
+      <a href="{% url 'main:create_pesanan_entry' %}" class="bg-red-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+          Buat pesanan, yuk!
+      </a>
+  </div>
+  {% if not pesanan_entries %}
+    <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+        <img src="{% static 'image/kraken.png' %}" alt="Sad face" class="w-64 h-64 mb-4"/>
+        <p class="text-center text-gray-600 font-medium mt-4">Belum ada pesanan, nih. Kamu mau pesan?</p>
+    </div>
+    {% else %}
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full">
+        {% for pesanan_entry in pesanan_entries %}
+            {% include 'card_pesanan.html' with pesanan_entry=pesanan_entry %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
 {% endblock content %}
