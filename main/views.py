@@ -26,7 +26,7 @@ def show_main(request):
         'description': 'Daging naga renyah dengan taburan darah kraken.',
         'rating' : '4.9/5.0',
         'quantity' : 'Maksimal 1 tiap transaksi.',
-        'name' : request.user.username,
+        'name' : "Daniel Angger Dewandaru",
         'NPM' : '2306275973',
         'pesanan_entries': pesanan_entries,
         'last_login': last_login,  # Use the default value if the cookie is missing
@@ -118,3 +118,17 @@ def delete_pesanan(request, id):
     pesanan.delete()
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def products_view(request):
+    product = {
+        'nama': 'Daging Naga khas Sulawesi',
+        'harga': 'Rp. 20.000',
+        'description': 'Daging naga renyah dengan taburan darah kraken.',
+        'rating' : '4.9/5.0',
+        'quantity' : 'Maksimal 1 tiap transaksi.',
+    }
+    context = {
+        'product': product
+    }
+    
+    return render(request, 'products.html', context)
