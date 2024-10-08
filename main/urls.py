@@ -22,6 +22,7 @@ from main.views import show_main, create_pesanan_entry, show_xml, show_json, sho
 from main.views import edit_pesanan
 from main.views import delete_pesanan
 from main.views import products_view
+from main.views import add_pesanan_entry_ajax
 
 app_name = 'main'
 
@@ -38,4 +39,5 @@ urlpatterns = [
     path('edit-pesanan/<uuid:id>', edit_pesanan, name='edit_pesanan'),
     path('delete/<uuid:id>', delete_pesanan, name='delete_pesanan'),
     path('products/', products_view, name='products'),
+    path('create-pesanan-entry-ajax', add_pesanan_entry_ajax, name='add_pesanan_entry_ajax'),
 ]
