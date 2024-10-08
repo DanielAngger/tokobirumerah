@@ -1,7 +1,9 @@
 <div class="bg-red-400 rounded-xl overflow-hidden border-2 border-red-800 relative group">
-  <div class="p-4 animate-shine">
-      <h5 class="text-lg font-semibold text-gray-200">{{ title }}</h5>
-      <p class="text-white">{{ value }}</p>
+  <div class="card-content flex items-center justify-center h-full"> 
+    <div class="text-center flex flex-col items-center justify-center h-full">
+      <h3 class="title text-style">{{ title }}</h3> <!-- Keep title visible by default -->
+      <p class="value text-style">{{ value }}</p>  <!-- Hide this by default and show on hover -->
+    </div>
   </div>
   <span class="absolute inset-0 bg-red-200 transition-all duration-300 group-hover:scale-100 scale-0 rounded-xl"></span>
 </div>

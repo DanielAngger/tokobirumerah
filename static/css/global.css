@@ -36,7 +36,7 @@
     transform: translate(-50%, -50%);
     width: 400px;
     height: 100px;
-    background-color: rgba(230, 94, 99, 0.8);
+    background-color: rgba(248, 99, 99, 0.8);
     border-radius: 20px;
     z-index: -1;
 }
@@ -50,38 +50,41 @@
     position: relative;
     z-index: 20;
     transition: opacity 0.5s ease;
+    height: 100%;                /* Ensure it takes full height of the parent */
 }
 
-/* Initially hide the values */
+/* Ensure the wrapper centers the text without affecting the card's shape */
+.card-content .text-center {
+    display: flex;
+    flex-direction: column;      /* Stack title and value vertically */
+    align-items: center;         /* Center items horizontally */
+    justify-content: center;      /* Center items vertically */
+    text-align: center;          /* Center text */
+    height: 100%;                /* Ensure it takes full height */
+}
+
 .card-content .value {
     opacity: 0; /* Hide values by default */
     transition: opacity 0.5s ease; /* Smooth transition */
 }
 
-/* Show values on hover */
 .card-container:hover .card-content .value {
-    opacity: 1; /* Show values on hover */
+    opacity: 1;
 }
 
-/* Additional hover effects */
 .card-container:hover .card-content .title {
-    opacity: 1; /* Keep titles visible */
+    opacity: 1;
 }
 
-.card-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(255, 190, 190);
-    transform: translateY(-100%);
-    transition: transform 0.5s ease;
-    z-index: 10;
-    clip-path: inset(0 round 10px);
+.card-container:hover .card-content .title {
+    opacity: 0;
 }
 
-.card-container:hover::before {
-    transform: translateY(0); /* Show the overlay */
-}
+.text-style {
+    font-size: 1.5rem;
+    color: hsl(0, 0%, 0%); 
+    font-weight: bold; 
+    text-align: center; 
+    margin: 0;         
+  }
+  
