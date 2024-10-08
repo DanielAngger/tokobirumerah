@@ -83,7 +83,7 @@
     transform: translateY(-100%);
     transition: transform 0.5s ease;
     z-index: 10;
-    clip-path: inset(0 round 200px); /* Ensures the shape follows the rounded corners */
+    clip-path: inset(0 round 0px);
 }
 
 .card-container:hover::before {
