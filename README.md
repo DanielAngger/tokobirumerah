@@ -52,3 +52,19 @@ Jelaskan konsep flex box dan grid layout beserta kegunaannya!
 
  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
  -. Pertama, tentukanlah jenis framework CSS yang akan digunakan, saya memilih tailwind, lalu tambahkanlah framework tersebut ke dalam base.html. Lalu, konfigurasikanlah proyek Django untuk menambahkan fitur edit product pada views.py dan sambungkanlah pada berkas HTML, lakukan hal yang sama untuk menambahkan fitur hapus product. Lalu, buatlah sebuah navigation bar untuk mempermudah pengguna untuk mengakses laman-laman pada web kita. Terakhir, hias atau desainlah laman-laman yang sudah kita buat sebelumnya dengan dokumentasi dari CSS Tailwind atau framwork lain, misalnya https://tailwindcss.com/docs/installation.
+
+ ## Tugas 6
+Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+-. JavaScript dalam pengembangan aplikasi web berguna dalam beberapa hal, pertama, JavaScript memungkinkan sebuah web untuk lebih interaktif, seperti formulir dinamis, animasi, dan lain-lain. Kedua, memungkinkan adanya asynchronus programming dengan menggunakan AJAX. Dua hal ini membuktikan keunggulan menggunakan JavaScript dalam pengembangan aplikasi web.
+
+Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+-. Await adalah sebuah fitur dalam JavaScript yang berguna untuk menangani asynchronus programming, contohnya fetch(), dengan cara menunggu hingga permintaan jaringan selesai, baru melanjutkan eksekui. Dengan cara ini, kita dapat lebih mudah menangani kesalahan dengan try/catch.
+
+Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+-. Kita perlu menggunakan csrf_exempt karena permintaan AJAX tidak selalu mengirimkan token CSRF, jadi kita perlu menambahkan decorator ini. Lalu, penggunaan decorator csrf_exempt juga membantu memastikan bahwa view tersebut aman dan tidak akan disalahgunakan.
+
+Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+-. Pembersihan data dilakukan di backend juga dilakukan karena alasan keamanan, karena walaupun pada front end terdapat validasi data, tetapi sebelum mencapai server, data bisa saja dirubah di tengah jalan, jadi perlu juga dilakukan validasi pada backend juga. Ini tentu sangat berbahaya bila terjadi, karena peretas jarang melakukan penyerangan secara terlihat.
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+-. Pertama, buatlah sebuah fungsi baru pada views.py pada directory main untuk membuat sebuah add product yang didukung AJAX. Lalu, ubahlah fungsi untuk menampilkan data, menjadi menampilkan data dengan fetch() API. Lalu, siapkanlah Modal form untuk menambahkan product. Lalu, modal form yang sudah dibuat, menjadi bahan untuk membuat input product menggunakan AJAX. Terakhir, lindungilah aplikasi dari cross site scripting dengan melakukan "pembersihan data".
