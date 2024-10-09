@@ -8,10 +8,13 @@
 {% block content %}
 {% include 'navbar.html' %}
 
-<div class="animate-shine overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-red-100 flex flex-col">
+<div class="flex flex-col items-center justify-center bg-red-100 pt-20 animate-shine">
+  <img src="{% static 'image/logo.png' %}" class="w-64 h-32 mb-4"/>
+</div>
+<div class="animate-shine overflow-x-hidden px-4 md:px-8 pb-8 pt-10 min-h-screen bg-red-100 flex flex-col">
   <div class="p-2 mb-6 relative">
       <div class="relative grid grid-cols-1 z-30 md:grid-cols-2 gap-20">
-        <div class="card-container">
+        <div class=" justify-center card-container">
             {% include "card_info.html" with title='NPM Kreator' value=NPM %}
         </div>
         <div class="card-container">

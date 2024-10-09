@@ -1,8 +1,8 @@
-<div class="bg-red-400 rounded-xl overflow-hidden border-2 border-red-800 relative group">
-  <div class="card-content flex items-center justify-center h-full"> 
-    <div class="text-center flex flex-col items-center justify-center h-full">
-      <h3 class="title text-style">{{ title }}</h3> <!-- Keep title visible by default -->
-      <p class="value text-style">{{ value }}</p>  <!-- Hide this by default and show on hover -->
+<div class="bg-red-300 rounded-xl overflow-hidden border-2 border-red-800 relative group card-info-container">
+  <div class="card-info-content flex items-center justify-center h-full"> 
+    <div class="card-info-text-center">
+      <h3 class="card-info-title card-info-text-style">{{ title }}</h3>
+      <p class="card-info-value card-info-text-style">{{ value }}</p> 
     </div>
   </div>
   <span class="absolute inset-0 bg-red-200 transition-all duration-300 group-hover:scale-100 scale-0 rounded-xl"></span>
