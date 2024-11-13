@@ -15,6 +15,10 @@ from main.models import PesananEntry
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils.html import strip_tags
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.http import JsonResponse
+from django.contrib.auth import logout as auth_logout
 
 @login_required(login_url='/login')
 def show_main(request):
@@ -151,3 +155,21 @@ def add_pesanan_entry_ajax(request):
     new_pesanan.save()
 
     return HttpResponse(b"CREATED", status=201)
+
+@csrf_exempt
+def create_pesanan_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        new_mood = PesananEntry.objects.create(
+            user=request.user,
+            pesanan=data["pesanan"],
+            quantitas=int(data["quantitas"]),
+            keterangan=data["deskripsi"]
+        )
+
+        new_mood.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
